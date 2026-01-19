@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:t4_1/models/PedidoDetalle.dart';
 
+/// Gestiona la creación, modificación y validación de un pedido.
 class PedidoViewModel extends ChangeNotifier {
 
 

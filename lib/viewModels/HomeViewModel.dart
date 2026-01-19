@@ -3,8 +3,9 @@ import 'package:t4_1/models/PedidoDetalle.dart';
 import 'package:flutter/material.dart';
 import 'package:t4_1/models/Producto.dart';
 
+/// Gestiona los pedidos que se muestran en la vista principal.
 class HomeViewmodel extends ChangeNotifier {
-
+  /// Datos de ejemplo de pedidos. Se mostrarán en la vista principal.
   final List<Pedido> _pedidos = [
     Pedido(
       mesa: 'Mesa 1',
@@ -23,18 +24,12 @@ class HomeViewmodel extends ChangeNotifier {
     ),
   ];
 
+  /// Devuelve la lista de pedidos actuales.
   List<Pedido> getPedidos() {
     return _pedidos;
   }
 
-  double get precioTotal {
-    double total = 0.0;
-    for (var pedido in _pedidos) {
-      total += pedido.total;
-    }
-    return total;
-  }
-
+  /// Añade un nuevo pedido a la lista y notifica a los Listeners.
   void addPedido(Pedido pedido) {
     _pedidos.add(pedido);
     notifyListeners();
