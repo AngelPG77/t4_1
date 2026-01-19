@@ -204,6 +204,16 @@ flutter run
 
 ---
 
+## Recomendaciones del chef
+
+### Arroz con mandarina
+
+Degusta nuestro plato experimental que aporta la energía del arroz con la dulzura de la mandarina
+
+### Sopa de patata
+
+Disfruta de la cocina tradicional humilde española, con un caldo suave y espeso y el sabor de la patata
+
 **Versión**: 1.0.0  
 **Última actualización**: Enero 2026  
 **Estado**: Finalizado
