@@ -12,7 +12,9 @@ class SeleccionViewmodel extends ChangeNotifier {
     Producto(id: '5', nombre: 'Pizza Margarita 30cm', precio: 10.0),
     Producto(id: '6', nombre: 'Tarta de queso', precio: 5.5),
     Producto(id: '7', nombre: 'Café', precio: 0.85),
-    Producto(id: '8', nombre: 'Chuletón 800gr', precio: 48.77)
+    Producto(id: '8', nombre: 'Chuletón 800gr', precio: 48.77),
+    Producto(id: '9', nombre: 'Sopa de Patata', precio: 2.0),
+    Producto(id: '10', nombre: 'Arroz con mandarina', precio: 10.0)
   ];
 
   final List<PedidoDetalle> _seleccion = [];
