@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="t4_1 API docs, for the Dart programming language.">
+  <title>t4_1 - Dart API docs</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="static-assets/github.css?v1">
+  <link rel="stylesheet" href="static-assets/styles.css?v1">
+  <link rel="icon" href="static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li class="self-crumb">t4_1 package</li>
+  </ol>
+  <div class="self-name">t4_1</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+  <div id="dartdoc-main-content" class="main-content">
+      
+<section class="desc markdown">
+  <h1 id="bar-app---gestor-de-pedidos">Bar App - Gestor de Pedidos</h1>
+<p>Una aplicación Flutter  para la gestión de pedidos de un bar. En ella podrás crear, organizar y visualizar pedidos de bebidas y productos desglosados en las distintas mesas del bar.</p>
+<hr>
+<h2 id="-tabla-de-contenidos">📋 Tabla de Contenidos</h2>
+<ul>
+<li><a href="#caracter%C3%ADsticas">Características</a></li>
+<li><a href="#requisitos-previos">Requisitos Previos</a></li>
+<li><a href="#instalaci%C3%B3n">Instalación</a></li>
+<li><a href="#estructura-del-proyecto">Estructura del Proyecto</a></li>
+<li><a href="#arquitectura">Arquitectura</a></li>
+<li><a href="#caracter%C3%ADsticas-principales">Características Principales</a></li>
+<li><a href="#tecnolog%C3%ADas-utilizadas">Tecnologías Utilizadas</a></li>
+<li><a href="#uso-de-la-aplicaci%C3%B3n">Uso de la Aplicación</a></li>
+</ul>
+<hr>
+<h2 id="caractersticas">Características</h2>
+<ul>
+<li><strong>Creación de Pedidos</strong>: Crear pedidos nuevos de manera rápida y sencilla</li>
+<li><strong>Selección de Productos</strong>: Amplio catálogo de bebidas y productos disponibles</li>
+<li><strong>Resumen de Pedidos</strong>: Visualizar en tiempo real el desglose de los pedidos</li>
+<li><strong>Gestión de Cantidades</strong>: Ajustar cantidades de productos en los pedidos</li>
+<li><strong>Interfaz Intuitiva</strong>: Diseño moderno con colores atractivos (tema rosa/magenta)</li>
+<li><strong>Historial de Pedidos</strong>: Ver todos los pedidos creados y completados</li>
+<li><strong>Tipografía Personalizada</strong>: Fuente Raleway para mejor legibilidad</li>
+</ul>
+<hr>
+<h2 id="requisitos-previos">Requisitos Previos</h2>
+<p>Antes de comenzar, asegúrate de tener instalado:</p>
+<ul>
+<li><strong>Flutter</strong>: v3.9.2 o superior</li>
+<li><strong>Dart</strong>: v3.9.2 o superior</li>
+<li><strong>Git</strong> (opcional, para control de versiones)</li>
+<li>Un editor como <strong>VS Code</strong> o <strong>Android Studio</strong></li>
+</ul>
+<hr>
+<h2 id="instalacin">Instalación</h2>
+<h3 id="1-clonar-el-repositorio">1. Clonar el Repositorio</h3>
+<pre class="language-bash"><code class="language-bash">git clone https://github.com/AngelPG77/t4_1
+cd t4_1
+</code></pre>
+<h3 id="2-obtener-dependencias">2. Obtener Dependencias</h3>
+<pre class="language-bash"><code class="language-bash">flutter pub get
+</code></pre>
+<h3 id="3-ejecutar-la-aplicacin">3. Ejecutar la Aplicación</h3>
+<p>Para ejecutar en un dispositivo o emulador:</p>
+<pre class="language-bash"><code class="language-bash">flutter run
+</code></pre>
+<p>Para ejecutar en plataforma específica:</p>
+<pre class="language-bash"><code class="language-bash"># En Android
+flutter run -d android
+
+# En Web
+flutter run -d chrome
+</code></pre>
+<hr>
+<h2 id="estructura-del-proyecto">Estructura del Proyecto</h2>
+<pre class="language-dart"><code>lib/
+├── main.dart                          # Punto de entrada de la aplicación
+├── models/
+│   ├── Producto.dart                  # Modelo de productos
+│   ├── Pedido.dart                    # Modelo de pedidos
+│   └── PedidoDetalle.dart             # Detalles de cada línea del pedido
+├── viewModels/
+│   ├── HomeViewModel.dart             # Lógica de la pantalla principal
+│   ├── PedidoViewModel.dart           # Lógica de creación de pedidos
+│   └── SeleccionViewModel.dart        # Lógica de selección de productos
+└── views/
+    ├── HomePage.dart                  # Pantalla principal
+    ├── CrearPedidoScreen.dart         # Pantalla de creación de pedidos
+    ├── SeleccionProductosScreen.dart  # Pantalla de selección de productos
+    └── ResumenPedido.dart             # Pantalla de resumen del pedido
+
+assets/
+├── fonts/                             # Fuentes personalizadas
+│   └── Raleway-*.ttf                  # Fuentes Raleway
+└── icons/                             # Iconos de la aplicación
+</code></pre>
+<hr>
+<h2 id="arquitectura">Arquitectura</h2>
+<p>La aplicación sigue el patrón <strong>MVVM (Model-View-ViewModel)</strong>:</p>
+<h3 id="models"><strong>Models</strong></h3>
+<p>Contienen la lógica de datos puros:</p>
+<ul>
+<li><code>Producto</code>: Representa un producto con id, nombre y precio</li>
+<li><code>Pedido</code>: Estructura principal de un pedido</li>
+<li><code>PedidoDetalle</code>: Detalle de un pedido</li>
+</ul>
+<h3 id="viewmodels"><strong>ViewModels</strong></h3>
+<p>Contienen la lógica empresarial:</p>
+<ul>
+<li><code>HomeViewModel</code>: Gestiona el estado y datos de la pantalla principal</li>
+<li><code>PedidoViewModel</code>: Controla la creación y modificación de pedidos</li>
+<li><code>SeleccionViewModel</code>: Maneja la selección y búsqueda de productos</li>
+</ul>
+<h3 id="views"><strong>Views</strong></h3>
+<p>Componentes visuales de Flutter:</p>
+<ul>
+<li><code>HomePage</code>: Pantalla inicial con listado de pedidos</li>
+<li><code>CrearPedidoScreen</code>: Interfaz para crear nuevos pedidos</li>
+<li><code>SeleccionProductosScreen</code>: Catálogo y selección de productos</li>
+<li><code>ResumenPedido</code>: Resumen detallado del pedido</li>
+</ul>
+<hr>
+<h2 id="caractersticas-principales">Características Principales</h2>
+<h3 id="pantalla-de-inicio">Pantalla de Inicio</h3>
+<ul>
+<li>Visualiza todos los pedidos existentes</li>
+<li>Opción para crear un nuevo pedido</li>
+<li>Acceso rápido a pedidos recientes</li>
+</ul>
+<h3 id="creacin-de-pedidos">Creación de Pedidos</h3>
+<ul>
+<li>Interfaz intuitiva paso a paso</li>
+<li>Validación de datos en tiempo real</li>
+<li>Confirmación antes de finalizar</li>
+</ul>
+<h3 id="seleccin-de-productos">Selección de Productos</h3>
+<ul>
+<li>Catálogo completo de bebidas y productos</li>
+<li>Búsqueda y filtrado de productos</li>
+<li>Vista previa de precios</li>
+</ul>
+<h3 id="resumen-del-pedido">Resumen del Pedido</h3>
+<ul>
+<li>Desglose detallado de todos los items</li>
+<li>Cálculo automático de totales</li>
+<li>Historial de cambios</li>
+</ul>
+<hr>
+<h2 id="tecnologas-utilizadas">Tecnologías Utilizadas</h2>
+<table>
+<thead>
+<tr>
+<th>Tecnología</th>
+<th>Versión</th>
+<th>Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Flutter</strong></td>
+<td>3.9.2+</td>
+<td>Framework de desarrollo multiplataforma</td>
+</tr>
+<tr>
+<td><strong>Dart</strong></td>
+<td>3.9.2+</td>
+<td>Lenguaje de programación</td>
+</tr>
+<tr>
+<td><strong>Material Design 3</strong></td>
+<td>Incluido</td>
+<td>Diseño y componentes UI</td>
+</tr>
+<tr>
+<td><strong>Raleway Font</strong></td>
+<td>-</td>
+<td>Tipografía personalizada</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dependencias">Dependencias</h3>
+<pre class="language-yaml"><code class="language-yaml">dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+  flutter_lints: ^5.0.0
+</code></pre>
+<hr>
+<h2 id="uso-de-la-aplicacin">Uso de la Aplicación</h2>
+<h3 id="1-iniciar-la-aplicacin">1. Iniciar la Aplicación</h3>
+<pre class="language-bash"><code class="language-bash">flutter run
+</code></pre>
+<h3 id="2-crear-un-nuevo-pedido">2. Crear un Nuevo Pedido</h3>
+<ul>
+<li>Toca el botón <strong>"Nuevo Pedido"</strong> en la pantalla principal</li>
+<li>Se abrirá la pantalla de creación</li>
+</ul>
+<h3 id="3-seleccionar-productos">3. Seleccionar Productos</h3>
+<ul>
+<li>Navega a través del catálogo de productos</li>
+<li>Selecciona los productos deseados</li>
+<li>Ajusta las cantidades según sea necesario</li>
+</ul>
+<h3 id="4-revisar-resumen">4. Revisar Resumen</h3>
+<ul>
+<li>Visualiza el resumen completo del pedido</li>
+<li>Verifica precios y cantidades</li>
+<li>Confirma o edita si es necesario</li>
+</ul>
+<h3 id="5-completar-pedido">5. Completar Pedido</h3>
+<ul>
+<li>Una vez confirmado, el pedido se agrega al historial</li>
+<li>Puedes ver todos los pedidos en la pantalla principal</li>
+</ul>
+<hr>
+<h2 id="recomendaciones-del-chef">Recomendaciones del chef</h2>
+<h3 id="arroz-con-mandarina">Arroz con mandarina</h3>
+<p>Degusta nuestro plato experimental que aporta la energía del arroz con la dulzura de la mandarina</p>
+<h3 id="sopa-de-patata">Sopa de patata</h3>
+<p>Disfruta de la cocina tradicional humilde española, con un caldo suave y espeso y el sabor de la patata</p>
+<p><strong>Versión</strong>: 1.0.0<br>
+<strong>Última actualización</strong>: Enero 2026<br>
+<strong>Estado</strong>: Finalizado</p>
+</section>
+
+
+      <section class="summary">
+          <h2>Libraries</h2>
+        <dl>
+          <dt id="main">
+  <span class="name"><a href="main/">main</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="Pedido">
+  <span class="name"><a href="models_Pedido/">models\Pedido</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="PedidoDetalle">
+  <span class="name"><a href="models_PedidoDetalle/">models\PedidoDetalle</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="Producto">
+  <span class="name"><a href="models_Producto/">models\Producto</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="HomeViewModel">
+  <span class="name"><a href="viewModels_HomeViewModel/">viewModels\HomeViewModel</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="PedidoViewModel">
+  <span class="name"><a href="viewModels_PedidoViewModel/">viewModels\PedidoViewModel</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="SeleccionViewModel">
+  <span class="name"><a href="viewModels_SeleccionViewModel/">viewModels\SeleccionViewModel</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="CrearPedidoScreen">
+  <span class="name"><a href="views_CrearPedidoScreen/">views\CrearPedidoScreen</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="HomePage">
+  <span class="name"><a href="views_HomePage/">views\HomePage</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="homePage">
+  <span class="name"><a href="views_homePage/">views\homePage</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="ResumenPedido">
+  <span class="name"><a href="views_ResumenPedido/">views\ResumenPedido</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="SeleccionProductosScreen">
+  <span class="name"><a href="views_SeleccionProductosScreen/">views\SeleccionProductosScreen</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+        </dl>
+      </section>
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li class="self-crumb">t4_1 package</li>
+</ol>
+
+    <h5 class="hidden-xs"><span class="package-name">t4_1</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="main/">main</a></li>
+      <li><a href="models_Pedido/">models\Pedido</a></li>
+      <li><a href="models_PedidoDetalle/">models\PedidoDetalle</a></li>
+      <li><a href="models_Producto/">models\Producto</a></li>
+      <li><a href="viewModels_HomeViewModel/">viewModels\HomeViewModel</a></li>
+      <li><a href="viewModels_PedidoViewModel/">viewModels\PedidoViewModel</a></li>
+      <li><a href="viewModels_SeleccionViewModel/">viewModels\SeleccionViewModel</a></li>
+      <li><a href="views_CrearPedidoScreen/">views\CrearPedidoScreen</a></li>
+      <li><a href="views_HomePage/">views\HomePage</a></li>
+      <li><a href="views_homePage/">views\homePage</a></li>
+      <li><a href="views_ResumenPedido/">views\ResumenPedido</a></li>
+      <li><a href="views_SeleccionProductosScreen/">views\SeleccionProductosScreen</a></li>
+</ol>
+
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div>
+</main>
+<footer>
+  <span class="no-break">
+    t4_1
+      1.0.0+1
+  </span>
+  
+</footer>
+
+
+<script src="static-assets/highlight.pack.js?v1"></script>
+<script src="static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+
