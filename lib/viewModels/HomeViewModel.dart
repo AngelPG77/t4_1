@@ -3,7 +3,12 @@ import 'package:t4_1/models/PedidoDetalle.dart';
 import 'package:flutter/material.dart';
 import 'package:t4_1/models/Producto.dart';
 
-/// Gestiona los pedidos que se muestran en la vista principal.
+/// ViewModel que gestiona la lista de pedidos en la pantalla principal.
+/// 
+/// Responsabilidades:
+/// - Mantener un registro de todos los pedidos
+/// - Permitir agregar nuevos pedidos a la lista
+/// - Proporcionar acceso a los datos de pedidos para su visualización
 class HomeViewmodel extends ChangeNotifier {
   /// Datos de ejemplo de pedidos. Se mostrarán en la vista principal.
   final List<Pedido> _pedidos = [
@@ -24,12 +29,13 @@ class HomeViewmodel extends ChangeNotifier {
     ),
   ];
 
-  /// Devuelve la lista de pedidos actuales.
+  /// Devuelve la lista de pedidos actuales para mostrar en la interfaz.
   List<Pedido> getPedidos() {
     return _pedidos;
   }
 
-  /// Añade un nuevo pedido a la lista y notifica a los Listeners.
+  /// Añade un nuevo pedido a la lista y notifica a los listeners para que redibuje la UI.
+  /// Este método es llamado cuando un pedido es confirmado desde la pantalla de creación.
   void addPedido(Pedido pedido) {
     _pedidos.add(pedido);
     notifyListeners();
