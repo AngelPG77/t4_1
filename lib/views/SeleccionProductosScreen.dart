@@ -33,6 +33,24 @@ class _SeleccionProductosScreenState extends State<SeleccionProductosScreen> {
   }
 
   void _confirmarSeleccion() {
+    // Muestra una Snackbar confirmando que los productos fueron añadidos correctamente
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Productos añadidos/actualizados correctamente',
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        duration: const Duration(milliseconds: 2000),
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+      ),
+    );
     Navigator.pop(context, viewModel.seleccion);
   }
 

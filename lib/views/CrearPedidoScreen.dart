@@ -111,6 +111,24 @@ class _CrearPedidoScreenState extends State<CrearPedidoScreen> {
         mesa: viewModel.mesa,
         productos: viewModel.cuenta,
       );
+      
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Pedido guardado - ${pedidoFinal.totalProductos} artículo${pedidoFinal.totalProductos > 1 ? 's' : ''} en ${pedidoFinal.mesa}',
+            style: TextStyle(
+              color: colorScheme.onPrimaryContainer,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          backgroundColor: colorScheme.primaryContainer,
+          duration: const Duration(milliseconds: 1200),
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+        ),
+      );
       Navigator.pop(context, pedidoFinal);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -277,26 +295,35 @@ class _CrearPedidoScreenState extends State<CrearPedidoScreen> {
                     ),
                     const SizedBox(width: 10),
                     Expanded(
-                      child: ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: colorScheme.errorContainer,
-                          foregroundColor: colorScheme.onErrorContainer,
+                      child: Tooltip(
+                        message: (viewModel.cuenta.isEmpty && _mesaController.text.isEmpty)
+                            ? 'Debes añadir un nombre de mesa y al menos un producto'
+                            : (viewModel.cuenta.isEmpty)
+                            ? 'Debes añadir al menos un producto'
+                            : (_mesaController.text.isEmpty)
+                            ? 'Debes indicar el nombre de la mesa'
+                            : '',
+                        child: ElevatedButton.icon(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: colorScheme.errorContainer,
+                            foregroundColor: colorScheme.onErrorContainer,
+                          ),
+                          icon: Icon(
+                            Icons.list_alt,
+                            color: colorScheme.onErrorContainer,
+                          ),
+                          label: const Text('Resumen'),
+                          onPressed:
+                              (viewModel.cuenta.isNotEmpty &&
+                                  _mesaController.text.isNotEmpty)
+                              ? () => _verResumenPedido(
+                                    Pedido(
+                                      mesa: viewModel.mesa,
+                                      productos: viewModel.cuenta,
+                                    ),
+                                  )
+                              : null,
                         ),
-                        icon: Icon(
-                          Icons.list_alt,
-                          color: colorScheme.onErrorContainer,
-                        ),
-                        label: const Text('Resumen'),
-                        onPressed:
-                            (viewModel.cuenta.isNotEmpty ||
-                                _mesaController.text.isNotEmpty)
-                            ? () => _verResumenPedido(
-                                  Pedido(
-                                    mesa: viewModel.mesa,
-                                    productos: viewModel.cuenta,
-                                  ),
-                                )
-                            : null,
                       ),
                     ),
                   ],
